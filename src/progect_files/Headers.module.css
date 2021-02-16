@@ -1,0 +1,78 @@
+/* header */
+.site_header {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.849);
+}
+
+a:hover {
+  color: rgb(243, 243, 243);
+  border-bottom: 3px solid rgb(31, 28, 28);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  padding: 10px;
+  height: 50px;
+  width: 100%;
+}
+
+.logo a {
+  display: flex;
+  padding: 3px;
+  align-items: center;
+
+  background: linear-gradient(135deg, #1512bc 50%, #fabe0e 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: 3px solid transparent;
+  border-image: linear-gradient(135deg, #0e0bc5a1 40%, #fabe0e 60%);
+  border-image-slice: 1;
+}
+
+.logo img {
+  width: 30px;
+  margin: 3px;
+  border-radius: 50%;
+}
+
+.logo p {
+  font-size: 22px;
+  margin: 3px;
+  text-align: center;
+}
+
+/* nav */
+.nav {
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  margin: 0 auto;
+  border-left: 1px solid rgb(69, 67, 71);
+  border-right: 1px solid rgb(69, 67, 71);
+}
+
+.nav_item {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.proviles {
+  display: flex;
+  width: 100%;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.proviles a {
+  margin: 0 10px 0 10px;
+}
+
+.proviles p {
+  font-family: "Rubik One", sans-serif;
+  text-transform: uppercase;
+  background: linear-gradient(45deg, #1512bc 10%, #fabe0e 90%, #043277);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
