@@ -1,0 +1,33 @@
+.user_info_panel {
+  justify-content: center;
+}
+
+.users_info {
+  margin: 50px;
+}
+
+.users_info img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.users_info div {
+  background: rgb(122, 114, 114);
+  border: 1px solid rgb(46, 45, 45);
+  padding: 10px;
+}
+
+.users_info p,
+h3,
+h4 {
+  background: rgb(68, 66, 66);
+  text-align: center;
+}
+.users_info h4 {
+  color: rgb(156, 137, 137);
+}
+
+.user_like {
+  display: flex;
+  justify-content: center;
+}

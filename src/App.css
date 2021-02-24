@@ -3,29 +3,6 @@
   padding: 0;
 }
 
-body {
-  color: #383749;
-  font-size: 16px;
-  line-height: 1.8;
-  font-family: "Roboto", sans-serif;
-
-  background: url("./images/logo.jpg") center top fixed;
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-}
-
-.flex {
-  display: flex !important;
-}
-
-img {
-  vertical-align: baseline;
-}
-
 /*--------------------------------------------------------------
 # Links
 --------------------------------------------------------------*/
@@ -38,10 +15,10 @@ a:visited {
   color: #757686;
 }
 
-a:hover,
-a:focus,
-a:active {
-  color: #383749;
+a:focus {
+  color: #e7e6ee;
+  background: rgba(179, 177, 177, 0.151);
+  border-radius: 7%;
 }
 
 a:focus {

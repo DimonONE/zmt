@@ -1,20 +1,16 @@
 /* header */
 .site_header {
   display: flex;
-  background-color: rgba(0, 0, 0, 0.849);
-}
-
-a:hover {
-  color: rgb(243, 243, 243);
-  border-bottom: 3px solid rgb(31, 28, 28);
+  background-color: rgba(0, 0, 0, 0.37);
+  width: 100%;
 }
 
 /* Logo */
 .logo {
   display: flex;
   padding: 10px;
-  height: 50px;
-  width: 100%;
+  height: 35px;
+  margin-left: 15px;
 }
 
 .logo a {
@@ -28,6 +24,11 @@ a:hover {
   border: 3px solid transparent;
   border-image: linear-gradient(135deg, #0e0bc5a1 40%, #fabe0e 60%);
   border-image-slice: 1;
+}
+
+.logo a:focus,
+a:active {
+  outline: none;
 }
 
 .logo img {
@@ -47,22 +48,35 @@ a:hover {
   display: flex;
   padding: 5px;
   align-items: center;
-  margin: 0 auto;
-  border-left: 1px solid rgb(69, 67, 71);
-  border-right: 1px solid rgb(69, 67, 71);
+  justify-content: center;
+  width: 100%;
+}
+
+.nav a:hover {
+  color: rgb(243, 243, 243);
+  border-bottom: 3px solid rgb(31, 28, 28);
 }
 
 .nav_item {
-  margin-left: 20px;
-  margin-right: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.nav .nav_item:hover {
+  border-right: 1px solid rgb(129, 102, 102);
+  border-left: 1px solid rgb(129, 102, 102);
+
+  padding-left: 19px;
+  padding-right: 19px;
 }
 
 .proviles {
   display: flex;
-  width: 100%;
-
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
+  padding-left: 10px;
+  padding-right: 15px;
 }
 
 .proviles a {
@@ -75,4 +89,9 @@ a:hover {
   background: linear-gradient(45deg, #1512bc 10%, #fabe0e 90%, #043277);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.proviles p:hover {
+  background: linear-gradient(100deg, #1512bc 20%, #fabe0e 20%, #043277);
+  -webkit-background-clip: text;
 }
