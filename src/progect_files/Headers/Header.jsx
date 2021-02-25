@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 
 let Header = (params) => {
     return(
-        <header className={`${styles.site_header} container`}>
+        <header className={`${styles.site_header}`}>
                     <div className={`${styles.logo} `}>
                         <a href="/head">
                             <img src={logo} alt="logo"/>
@@ -36,7 +36,7 @@ let Header = (params) => {
                     </div>    
 
                     <div className={`${styles.proviles} col-3`}>
-                        <a href="">{params.user}</a>
+                        <a href=""> <p>{params.user}</p></a>
 
                         <a href=""><p>Регистрація</p></a>
                         <p>/</p>

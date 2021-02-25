@@ -1,0 +1,57 @@
+.Dialog {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
+
+.Dialog h3 {
+  background: rgba(0, 0, 0, 0.13);
+}
+
+.Dialog .messages {
+  background: rgba(255, 255, 255, 0.5);
+  margin: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.diialog_with_user {
+  margin: 10px 20px 0 0;
+}
+
+.diialog_with_user h4 {
+  border-radius: 30px;
+}
+
+.active:hover {
+  color: #fabe0e;
+}
+
+.message_content {
+  margin: 10px;
+  background: rgb(196, 181, 181);
+  min-height: 100%;
+  max-height: 100%;
+}
+
+.message_content img {
+  height: 100%;
+  margin: 5px;
+  border-radius: 50%;
+  float: left;
+}
+
+.row_info {
+  display: flex;
+  height: 30px;
+  padding: 10px;
+  align-items: center;
+}
+
+.message {
+  width: 78%;
+  text-align: left;
+}
+
+.message p {
+  padding-left: 30px;
+}

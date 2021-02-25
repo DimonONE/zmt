@@ -1,7 +1,7 @@
 /* header */
 .site_header {
   display: flex;
-  background-color: rgba(0, 0, 0, 0.37);
+  background-color: rgba(80, 80, 65, 0.733);
   width: 100%;
 }
 
@@ -18,11 +18,11 @@
   padding: 3px;
   align-items: center;
 
-  background: linear-gradient(135deg, #1512bc 50%, #fabe0e 70%);
+  background: linear-gradient(135deg, #1410f3 50%, #fabe0e 70%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   border: 3px solid transparent;
-  border-image: linear-gradient(135deg, #0e0bc5a1 40%, #fabe0e 60%);
+  border-image: linear-gradient(135deg, #1410f3 40%, #fabe0e 60%);
   border-image-slice: 1;
 }
 
@@ -52,9 +52,12 @@ a:active {
   width: 100%;
 }
 
+.nav a {
+  color: #fabe0e;
+}
+
 .nav a:hover {
-  color: rgb(243, 243, 243);
-  border-bottom: 3px solid rgb(31, 28, 28);
+  color: rgb(0, 0, 0);
 }
 
 .nav_item {
@@ -86,12 +89,12 @@ a:active {
 .proviles p {
   font-family: "Rubik One", sans-serif;
   text-transform: uppercase;
-  background: linear-gradient(45deg, #1512bc 10%, #fabe0e 90%, #043277);
+  background: linear-gradient(135deg, #1410f3 50%, #fabe0e 70%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .proviles p:hover {
-  background: linear-gradient(100deg, #1512bc 20%, #fabe0e 20%, #043277);
+  background: linear-gradient(100deg, #1410f3 20%, #fabe0e 40%, #043277);
   -webkit-background-clip: text;
 }

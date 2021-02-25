@@ -5,14 +5,13 @@
 
     import {BrowserRouter, Route} from "react-router-dom";
     import "./App.css"
-    // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
     function App() {
       return (
         <BrowserRouter>
-          <div className="App">
+          <div className="Main">
             <Header user="params"/>
             <Section />
           </div>
