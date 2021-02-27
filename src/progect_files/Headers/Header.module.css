@@ -26,11 +26,6 @@
   border-image-slice: 1;
 }
 
-.logo a:focus,
-a:active {
-  outline: none;
-}
-
 .logo img {
   width: 30px;
   margin: 3px;

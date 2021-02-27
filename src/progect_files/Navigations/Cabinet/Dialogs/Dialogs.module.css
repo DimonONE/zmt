@@ -15,32 +15,56 @@
 }
 
 .diialog_with_user {
-  margin: 10px 20px 0 0;
+  margin: 10px 0 0 5px;
 }
 
 .diialog_with_user h4 {
   border-radius: 30px;
 }
 
-.active:hover {
-  color: #fabe0e;
+.active:hover,
+.active:focus {
+  color: #fabf0ee7;
 }
 
 .message_content {
   margin: 10px;
   background: rgb(196, 181, 181);
-  min-height: 100%;
-  max-height: 100%;
 }
 
-.message_content img {
+.item_poisk_message {
+  padding: 5px;
+  background: #000;
+}
+
+.nav_messages img {
   height: 100%;
   margin: 5px;
   border-radius: 50%;
   float: left;
 }
 
-.row_info {
+.messages .nav_messages {
+  background: rgba(0, 0, 0, 0.479);
+}
+
+.info_for_user {
+  display: flex;
+  background: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.438);
+}
+
+.info_for_user .nav_messages {
+  margin: 0 auto;
+  background: none;
+}
+
+.info_for_user h3 {
+  background: none;
+}
+
+.row_info,
+.nav_messages {
   display: flex;
   height: 30px;
   padding: 10px;
@@ -48,6 +72,7 @@
 }
 
 .message {
+  display: flex;
   width: 78%;
   text-align: left;
 }

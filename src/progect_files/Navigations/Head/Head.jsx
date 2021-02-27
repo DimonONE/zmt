@@ -1,7 +1,7 @@
     import React from "react";
     import styles from "./Head.module.css";
 
-    import users_img from '../../images/users.jpg'; 
+    import users_img from '../../../images/users.jpg'; 
 
     let Head = () => {
         return(

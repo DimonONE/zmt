@@ -1,25 +1,22 @@
     import './App.css';
     import React from "react";
     import Header from './progect_files/Headers/Header';
-    import Section from './progect_files/main/Sections';
+    import Section from './progect_files/Navigations/Sections';
 
     import {BrowserRouter, Route} from "react-router-dom";
-    import "./App.css"
 
 
 
-    function App() {
+    function App(props) {
       return (
         <BrowserRouter>
           <div className="Main">
             <Header user="params"/>
-            <Section />
+            <Section {...props}/>
           </div>
         </BrowserRouter>
       );
     }
-
-
 
 
     export default App;

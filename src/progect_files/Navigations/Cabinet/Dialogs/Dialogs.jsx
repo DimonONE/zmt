@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "./Dialogs.module.css";
-import avatar from '../.././images/logo.jpg';
+import avatar from '../../../../images/logo.jpg';
 import { NavLink } from "react-router-dom";
 
+
 const Dialog_with_user = (props) => {
-    let path = "/cabinet/message_" + props.Id;
+    let path = "/cabinet/chat_id_" + props.Id;
 
     return(
         <div className={styles.diialog_with_user}>
@@ -16,7 +17,7 @@ const Dialog_with_user = (props) => {
 
 const Messages = (props) => {
     return (
-            <div className={styles.message_content}>
+            <div className={`${styles.message_content} ${styles.nav_messages}`}>
                     <div className={styles.row_info}>
                         <img  src={avatar} alt=""/>
                         <h5>{props.name}</h5>
@@ -31,30 +32,32 @@ const Messages = (props) => {
 }
 
 
+let Dialogs = (props) => {
 
-let Dialogs = (params) => {
     return(
+
         <div className={styles.Dialog}>
             <div>
-                <Dialog_with_user name="Dimon" Id="1" />
-                <Dialog_with_user name="Andre" Id="2" />
-                <Dialog_with_user name="Miha" Id="3" />
-                <Dialog_with_user name="Lamula" Id="4" />
-                <Dialog_with_user name="Siroga" Id="5" />
+                {props.DialogData.map( dialog => <Dialog_with_user name={dialog.name} Id={dialog.id} /> )}
             </div>
             
 
             <div className={styles.messages}>
-                <div className="user_init">
-                    <img src="" alt=""/>
-                    <h3>User name</h3>
-                    <p className="online"></p>
+                <div className={styles.info_for_user}>
+                    <div className={`${styles.nav_messages} `}>
+                        <img src={avatar} alt=""/>
+                        <h3>User name</h3>
+                        <p className="online"></p>
+                    </div>
+
+                    <div className={styles.item_poisk_message}>
+                       <p>Поіск</p> 
+                    </div>
+                </div>
+                <div>
+                    {props.MessagesData.map( message => <Messages name={message.name} message={message.message}/>)}
                 </div>
 
-                <Messages name="Vadim" message="helow"/>
-                <Messages name="Dmon" message="how are you?"/>
-                <Messages name="Dmon" message="how are you?"/>
-                <Messages name="Dmon" message="how are you?"/>
 
             </div>
         </div>
