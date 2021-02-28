@@ -1,5 +1,4 @@
 const Store = {
-//Render 
     _RenderUpadate() {
     console.log("yo")
   },
@@ -34,22 +33,22 @@ const Store = {
     return this._state
   },
   
-  addMessage() {
-    debugger
-    let newsMesage = {
-      name: "Alisa", 
-      message: this._state.newValues
-    };
 
-    this._state.MessagesData.push(newsMesage);
-    this._RenderUpadate(this._state);
-  },
-  
-   updateMessageText(newText) {
-    this._state.newValues = newText;
-    this._RenderUpadate(this._state);
+  dispatch(action) {
+    if (action.type === "ADD-MESSAGE") {
+        let newsMesage = {
+          name: "Alisa", 
+          message: this._state.newValues
+        };
+    
+        this._state.MessagesData.push(newsMesage);
+        this._RenderUpadate(this._state);
+    
+    } else if (action.type === "UPDATE-MESSAGE-TEXT") {
+        this._state.newValues = action.newText;
+        this._RenderUpadate(this._state);
+    }  
   }
-
 }
 
 export default Store;

@@ -8,9 +8,7 @@ let Cabinet = (props) => {
     return(
         <div className={styles.user_panel}>
             <div className="Dialogs_main">
-                <Dialogs {...props}
-                         updateMessageText={props.updateMessageText}
-                         addMessage={props.addMessage}/>
+                <Dialogs {...props} dispatch={props.dispatch}/>
             </div>
             <div className={styles.info}>
                 <div className={styles.Avatar}>

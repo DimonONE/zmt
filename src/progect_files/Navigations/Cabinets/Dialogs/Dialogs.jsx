@@ -33,20 +33,20 @@ const Messages = (props) => {
 
 
 let Dialogs = (props) => {
+
     let newMessageElements = React.createRef();
 
     let addMessageElement = () => {
-        props.addMessage()
-        props.updateMessageText("")
+        props.dispatch({type:"ADD-MESSAGE"})
+        props.dispatch({type:"UPDATE-MESSAGE-TEXT", newText: ""})
 
     }
 
     let createOnChange = () => {
         let text = newMessageElements.current.value;
-        props.updateMessageText(text)
-        console.log(text)
+        props.dispatch({type:"UPDATE-MESSAGE-TEXT", newText: text})
+        // console.log(text)
     }
-
 
 
     return(
@@ -74,6 +74,7 @@ let Dialogs = (props) => {
                     <div className={styles.send_menu}>
                         <input onChange={createOnChange} 
                         ref={newMessageElements} 
+                        placeholder={props.state.newValues}
                         value={props.state.newValues}/>
                         <button className={styles.send_message} onClick={ addMessageElement }>Отправить</button>
                     </div>

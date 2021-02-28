@@ -13,7 +13,7 @@ export let renderApp = () => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={Store.getState()} addMessage={Store.addMessage.bind(Store)} updateMessageText={Store.updateMessageText.bind(Store)}/>
+        <App state={Store.getState()} dispatch={Store.dispatch.bind(Store)} />
       </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')
