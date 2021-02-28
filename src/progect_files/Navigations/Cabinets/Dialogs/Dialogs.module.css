@@ -80,3 +80,27 @@
 .message p {
   padding-left: 30px;
 }
+
+.messages .send_menu {
+  display: flex;
+  height: 30px;
+  padding: 8px;
+  align-items: center;
+}
+
+.send_menu .send_message {
+  height: 100%;
+  margin-left: 5px;
+  border: 1px solid #fabf0ee7;
+  border-radius: 27%;
+  color: #fabf0ee7;
+  background: rgba(29, 12, 177, 0.418);
+  padding: 3px;
+}
+
+.send_menu input {
+  height: 100%;
+  background: #fabf0e2d;
+  color: #000;
+  text-align: center;
+}

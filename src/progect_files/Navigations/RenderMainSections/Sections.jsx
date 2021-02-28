@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Sections.module.css";
-import Head from "./Head/Head";
-import Cabinet from "./Cabinet/Сabinet";
+import Head from "../Head/Head";
+import Cabinet from "../Cabinets/Cabinet/Сabinet";
 import { Route } from "react-router-dom";
 
 let Section = (props) => {

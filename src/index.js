@@ -1,19 +1,26 @@
+import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import {BrowserRouter, Route} from "react-router-dom";
+
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Store from "./DataBase/state"
 
-import Data from "./DataBase/Datas"
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App {...Data}/>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+export let renderApp = () => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <BrowserRouter>
+        <App state={Store.getState()} addMessage={Store.addMessage.bind(Store)} updateMessageText={Store.updateMessageText.bind(Store)}/>
+      </BrowserRouter>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+}
+
+renderApp(Store.getState())
+Store.subscribe(renderApp)
+
+

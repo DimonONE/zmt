@@ -4,7 +4,7 @@ import avatar from '../../../../images/logo.jpg';
 import { NavLink } from "react-router-dom";
 
 
-const Dialog_with_user = (props) => {
+const DialogWithUser = (props) => {
     let path = "/cabinet/chat_id_" + props.Id;
 
     return(
@@ -33,12 +33,26 @@ const Messages = (props) => {
 
 
 let Dialogs = (props) => {
+    let newMessageElements = React.createRef();
+
+    let addMessageElement = () => {
+        props.addMessage()
+        props.updateMessageText("")
+
+    }
+
+    let createOnChange = () => {
+        let text = newMessageElements.current.value;
+        props.updateMessageText(text)
+        console.log(text)
+    }
+
+
 
     return(
-
         <div className={styles.Dialog}>
             <div>
-                {props.DialogData.map( dialog => <Dialog_with_user name={dialog.name} Id={dialog.id} /> )}
+                {props.state.DialogData.map( dialog => <DialogWithUser name={dialog.name} Id={dialog.id} /> )}
             </div>
             
 
@@ -55,10 +69,15 @@ let Dialogs = (props) => {
                     </div>
                 </div>
                 <div>
-                    {props.MessagesData.map( message => <Messages name={message.name} message={message.message}/>)}
+                    {props.state.MessagesData.map( message => <Messages name={message.name} message={message.message}/>)}
+
+                    <div className={styles.send_menu}>
+                        <input onChange={createOnChange} 
+                        ref={newMessageElements} 
+                        value={props.state.newValues}/>
+                        <button className={styles.send_message} onClick={ addMessageElement }>Отправить</button>
+                    </div>
                 </div>
-
-
             </div>
         </div>
     );
