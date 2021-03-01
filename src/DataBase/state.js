@@ -1,3 +1,13 @@
+const ADD_MESSAGE = "ADD-MESSAGE";
+const UPDATE_MESSAGE_TEXT = "UPDATE-MESSAGE-TEXT";
+
+export const actionCreateAddMessage = () => ({type: ADD_MESSAGE})
+export const actionCreateUpdateMessageText = (text) => {
+    return ({type: UPDATE_MESSAGE_TEXT,
+            newText: text})
+}
+
+
 const Store = {
     _RenderUpadate() {
     console.log("yo")
@@ -35,7 +45,7 @@ const Store = {
   
 
   dispatch(action) {
-    if (action.type === "ADD-MESSAGE") {
+    if (action.type === ADD_MESSAGE) {
         let newsMesage = {
           name: "Alisa", 
           message: this._state.newValues
@@ -44,7 +54,7 @@ const Store = {
         this._state.MessagesData.push(newsMesage);
         this._RenderUpadate(this._state);
     
-    } else if (action.type === "UPDATE-MESSAGE-TEXT") {
+    } else if (action.type === UPDATE_MESSAGE_TEXT) {
         this._state.newValues = action.newText;
         this._RenderUpadate(this._state);
     }  

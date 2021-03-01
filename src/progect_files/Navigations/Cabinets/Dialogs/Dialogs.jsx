@@ -3,6 +3,8 @@ import styles from "./Dialogs.module.css";
 import avatar from '../../../../images/logo.jpg';
 import { NavLink } from "react-router-dom";
 
+import {actionCreateAddMessage, actionCreateUpdateMessageText} from "../../../../DataBase/state"
+
 
 const DialogWithUser = (props) => {
     let path = "/cabinet/chat_id_" + props.Id;
@@ -37,14 +39,14 @@ let Dialogs = (props) => {
     let newMessageElements = React.createRef();
 
     let addMessageElement = () => {
-        props.dispatch({type:"ADD-MESSAGE"})
-        props.dispatch({type:"UPDATE-MESSAGE-TEXT", newText: ""})
+        props.dispatch(actionCreateAddMessage())
+        props.dispatch(actionCreateUpdateMessageText(""))
 
     }
 
     let createOnChange = () => {
         let text = newMessageElements.current.value;
-        props.dispatch({type:"UPDATE-MESSAGE-TEXT", newText: text})
+        props.dispatch(actionCreateUpdateMessageText(text))
         // console.log(text)
     }
 
