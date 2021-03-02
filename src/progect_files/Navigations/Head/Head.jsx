@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Head.module.css";
 
 import users_img from '../../../images/users.jpg'; 
-import {actionCreateAddPost, actionCreateUpdatePost} from "../../../DataBase/state"
+import {actionCreateAddPost, actionCreateUpdatePost} from "../../../DataBase//PostReduser"
 
 
 const CreateHTMLPost = (props) => {
@@ -33,6 +33,7 @@ let Head = (props) => {
         let post = newPostElements.current.value;
         let Surname = newSurnameElements.current.value;
         props.dispatch(actionCreateUpdatePost(post, Surname))
+        
         console.log(post)
         console.log(Surname)
 
@@ -40,6 +41,7 @@ let Head = (props) => {
 
     let addPost = () => {
         props.dispatch(actionCreateAddPost())
+        props.dispatch(actionCreateUpdatePost("", ""))
     }
 
     return(

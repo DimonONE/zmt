@@ -4,10 +4,7 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter, Route} from "react-router-dom";
 
 import App from './App';
-import Store from "./DataBase/state"
-
-
-
+import Store from "./DataBase/Store"
 
 export let renderApp = () => {
   ReactDOM.render(

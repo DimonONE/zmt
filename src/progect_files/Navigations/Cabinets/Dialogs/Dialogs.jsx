@@ -3,7 +3,7 @@ import styles from "./Dialogs.module.css";
 import avatar from '../../../../images/logo.jpg';
 import { NavLink } from "react-router-dom";
 
-import {actionCreateAddMessage, actionCreateUpdateMessageText} from "../../../../DataBase/state"
+import {actionCreateAddMessage, actionCreateUpdateMessageText} from "../../../../DataBase/DialogsReducer"
 
 
 const DialogWithUser = (props) => {
