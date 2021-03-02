@@ -1,104 +1,71 @@
-    import React from "react";
-    import styles from "./Head.module.css";
+import React from "react";
+import styles from "./Head.module.css";
 
-    import users_img from '../../../images/users.jpg'; 
+import users_img from '../../../images/users.jpg'; 
+import {actionCreateAddPost, actionCreateUpdatePost} from "../../../DataBase/state"
 
-    let Head = () => {
-        return(
-            <div >
-                <div className={styles.users_info}>
-                    <div><img src={users_img} alt=""/>
-                        <div>
-                            <h3>Sur Name</h3>
-                            <div className={styles.user_like}>
-                                <h4>POST: </h4>
-                                <p>2</p>
-                            </div>
-                            <div className={styles.user_like}>
-                                <p>Like: </p>
-                                <p>101</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>    
-                <div className={styles.users_info}>
-                    <div><img src={users_img} alt=""/>
-                        <div>
-                            <h3>Sur Name</h3>
-                            <div className={styles.user_like}>
-                                <h4>POST: </h4>
-                                <p>232</p>
-                            </div>
-                            <div className={styles.user_like}>
-                                <p>Like: </p>
-                                <p>1012</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>    
-                <div className={styles.users_info}>
-                    <div><img src={users_img} alt=""/>
-                        <div>
-                            <h3>Sur Name</h3>
-                            <div className={styles.user_like}>
-                                <h4>POST: </h4>
-                                <p>2</p>
-                            </div>
-                            <div className={styles.user_like}>
-                                <p>Like: </p>
-                                <p>10</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>    
-                <div className={styles.users_info}>
-                    <div><img src={users_img} alt=""/>
-                        <div>
-                            <h3>Sur Name</h3>
-                            <div className={styles.user_like}>
-                                <h4>POST: </h4>
-                                <p>2</p>
-                            </div>
-                            <div className={styles.user_like}>
-                                <p>Like: </p>
-                                <p>10</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>    
-                <div className={styles.users_info}>
-                    <div><img src={users_img} alt=""/>
-                        <div>
-                            <h3>Sur Name</h3>
-                            <div className={styles.user_like}>
-                                <h4>POST: </h4>
-                                <p>2</p>
-                            </div>
-                            <div className={styles.user_like}>
-                                <p>Like: </p>
-                                <p>10</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>    
-                <div className={styles.users_info}>
-                    <div><img src={users_img} alt=""/>
-                        <div>
-                            <h3>Sur Name</h3>
-                            <div className={styles.user_like}>
-                                <h4>POST: </h4>
-                                <p>2</p>
-                            </div>
-                            <div className={styles.user_like}>
-                                <p>Like: </p>
-                                <p>10</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>    
-                 
+
+const CreateHTMLPost = (props) => {
+    return(
+    <div className={styles.users_info}>
+        <div><img src={users_img} alt=""/>
+            <div>
+                <h3>{props.SurName}</h3>
+                <div className={styles.user_like}>
+                    <h4>POST:</h4>
+                    <p>{props.post}</p>
+                </div>
+                <div className={styles.user_like}>
+                    <p>Like: </p>
+                    <p>{props.like}</p>
+                </div>
             </div>
-        );
+        </div>
+    </div>     
+    )}
+
+
+let Head = (props) => {
+    let newPostElements = React.createRef();
+    let newSurnameElements = React.createRef();
+
+    let OnChangenPostTextElements = () => {
+        let post = newPostElements.current.value;
+        let Surname = newSurnameElements.current.value;
+        props.dispatch(actionCreateUpdatePost(post, Surname))
+        console.log(post)
+        console.log(Surname)
+
     }
 
-    export default Head;
+    let addPost = () => {
+        props.dispatch(actionCreateAddPost())
+    }
+
+    return(
+        <div className={styles.mainHead}>
+        
+            <div className={styles.send_menu}>
+                <h2>SurName</h2>  
+                    <input 
+                        onChange={OnChangenPostTextElements}
+                        ref={newSurnameElements} 
+                        value={props.state.structurePost.newSurName}/>
+
+                    <h2>Post</h2>
+                    <input 
+                        onChange={OnChangenPostTextElements}
+                        ref={newPostElements} 
+                        value={props.state.structurePost.newNamePost}/><br/>
+
+                    <button className={styles.send_message} onClick={addPost} >Отправить</button>
+            </div>
+            
+            <div>
+                {props.state.structurePost.Post.map( posts => <CreateHTMLPost post={posts.POST} like={posts.Like} SurName={posts.SurName} />)}
+             </div>
+        </div>
+    );
+}
+
+export default Head;

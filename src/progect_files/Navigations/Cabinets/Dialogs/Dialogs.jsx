@@ -35,29 +35,24 @@ const Messages = (props) => {
 
 
 let Dialogs = (props) => {
-
-    let newMessageElements = React.createRef();
+    let createOnChange = (e) => {
+        let text = e.target.value;
+        props.dispatch(actionCreateUpdateMessageText(text))
+        // console.log(text)
+    }
 
     let addMessageElement = () => {
         props.dispatch(actionCreateAddMessage())
         props.dispatch(actionCreateUpdateMessageText(""))
-
-    }
-
-    let createOnChange = () => {
-        let text = newMessageElements.current.value;
-        props.dispatch(actionCreateUpdateMessageText(text))
-        // console.log(text)
     }
 
 
     return(
         <div className={styles.Dialog}>
             <div>
-                {props.state.DialogData.map( dialog => <DialogWithUser name={dialog.name} Id={dialog.id} /> )}
+                {props.state.structurDialogs.DialogData.map( dialog => <DialogWithUser name={dialog.name} Id={dialog.id} /> )}
             </div>
             
-
             <div className={styles.messages}>
                 <div className={styles.info_for_user}>
                     <div className={`${styles.nav_messages} `}>
@@ -71,13 +66,12 @@ let Dialogs = (props) => {
                     </div>
                 </div>
                 <div>
-                    {props.state.MessagesData.map( message => <Messages name={message.name} message={message.message}/>)}
+                    {props.state.structurDialogs.MessagesData.map( message => <Messages name={message.name} message={message.message}/>)}
 
                     <div className={styles.send_menu}>
                         <input onChange={createOnChange} 
-                        ref={newMessageElements} 
-                        placeholder={props.state.newValues}
-                        value={props.state.newValues}/>
+                        placeholder="Enter you message"
+                        value={props.state.structurDialogs.newValues}/>
                         <button className={styles.send_message} onClick={ addMessageElement }>Отправить</button>
                     </div>
                 </div>

@@ -4,7 +4,6 @@ import styles from "./Cabinet.module.css";
 import Dialogs from "../Dialogs/Dialogs";
 
 let Cabinet = (props) => {
-
     return(
         <div className={styles.user_panel}>
             <div className="Dialogs_main">

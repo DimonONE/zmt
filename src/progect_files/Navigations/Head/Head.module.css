@@ -1,8 +1,20 @@
+.mainHead {
+  width: 100%;
+}
+
+.send_menu {
+  position: fixed;
+  margin: 30px 0 0 2px;
+  padding: 13px;
+  background: rgba(228, 212, 212, 0.151);
+}
 .user_info_panel {
   justify-content: center;
 }
 
 .users_info {
+  display: flex;
+  justify-content: center;
   margin: 50px;
 }
 
