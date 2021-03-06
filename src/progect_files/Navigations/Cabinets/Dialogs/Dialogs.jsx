@@ -3,9 +3,6 @@ import styles from "./Dialogs.module.css";
 import avatar from '../../../../images/logo.jpg';
 import { NavLink } from "react-router-dom";
 
-import {actionCreateAddMessage, actionCreateUpdateMessageText} from "../../../../DataBase/DialogsReducer"
-
-
 const DialogWithUser = (props) => {
     let path = "/cabinet/chat_id_" + props.Id;
 
@@ -15,7 +12,6 @@ const DialogWithUser = (props) => {
         </div> 
     )
 }
-
 
 const Messages = (props) => {
     return (
@@ -35,22 +31,21 @@ const Messages = (props) => {
 
 
 let Dialogs = (props) => {
+    
     let createOnChange = (e) => {
         let text = e.target.value;
-        props.dispatch(actionCreateUpdateMessageText(text))
+        props.actionCreateUpdateMessageText(text)
         // console.log(text)
     }
 
     let addMessageElement = () => {
-        props.dispatch(actionCreateAddMessage())
-        props.dispatch(actionCreateUpdateMessageText(""))
+        props.actionCreateAddMessage()
     }
-
 
     return(
         <div className={styles.Dialog}>
             <div>
-                {props.state.structurDialogs.DialogData.map( dialog => <DialogWithUser name={dialog.name} Id={dialog.id} /> )}
+                {props.structurDialogs.DialogData.map( dialog => <DialogWithUser name={dialog.name} Id={dialog.id} /> )}
             </div>
             
             <div className={styles.messages}>
@@ -66,12 +61,12 @@ let Dialogs = (props) => {
                     </div>
                 </div>
                 <div>
-                    {props.state.structurDialogs.MessagesData.map( message => <Messages name={message.name} message={message.message}/>)}
+                    {props.structurDialogs.MessagesData.map( message => <Messages name={message.name} message={message.message}/>)}
 
                     <div className={styles.send_menu}>
                         <input onChange={createOnChange} 
                         placeholder="Enter you message"
-                        value={props.state.structurDialogs.newValues}/>
+                        value={props.structurDialogs.newValues}/>
                         <button className={styles.send_message} onClick={ addMessageElement }>Отправить</button>
                     </div>
                 </div>

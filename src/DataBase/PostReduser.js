@@ -1,7 +1,16 @@
 const ADD_POST = "ADD_POST";
 const UPDATE_POST = "UPDATE_POST";
 
-const PostReduser = (state, action) => {
+let initailState = {
+    Post: [
+      {POST: "Milk", Like: 1, SurName: "Lomsi"},
+   ],
+
+    newNamePost: "",
+    newSurName:"",
+  }
+
+const PostReduser = (state=initailState, action) => {
      switch (action.type){
          case ADD_POST:
             let newPost = {

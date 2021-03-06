@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./Cabinet.module.css";
 
-import Dialogs from "../Dialogs/Dialogs";
+import DialogsContainer from "../Dialogs/DialogsContainer";
 
 let Cabinet = (props) => {
     return(
         <div className={styles.user_panel}>
             <div className="Dialogs_main">
-                <Dialogs {...props} dispatch={props.dispatch}/>
+                <DialogsContainer {...props} dispatch={props.dispatch}/>
             </div>
             <div className={styles.info}>
                 <div className={styles.Avatar}>

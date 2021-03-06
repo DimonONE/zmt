@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Head.module.css";
 
 import users_img from '../../../images/users.jpg'; 
-import {actionCreateAddPost, actionCreateUpdatePost} from "../../../DataBase//PostReduser"
 
 
 const CreateHTMLPost = (props) => {
@@ -32,7 +31,7 @@ let Head = (props) => {
     let OnChangenPostTextElements = () => {
         let post = newPostElements.current.value;
         let Surname = newSurnameElements.current.value;
-        props.dispatch(actionCreateUpdatePost(post, Surname))
+        props.actionCreateUpdatePost(post, Surname)
         
         console.log(post)
         console.log(Surname)
@@ -40,10 +39,9 @@ let Head = (props) => {
     }
 
     let addPost = () => {
-        props.dispatch(actionCreateAddPost())
-        props.dispatch(actionCreateUpdatePost("", ""))
+        props.actionCreateAddPost()
     }
-
+    
     return(
         <div className={styles.mainHead}>
         
@@ -52,19 +50,19 @@ let Head = (props) => {
                     <input 
                         onChange={OnChangenPostTextElements}
                         ref={newSurnameElements} 
-                        value={props.state.structurePost.newSurName}/>
+                        value={props.structurePost.newSurName}/>
 
                     <h2>Post</h2>
                     <input 
                         onChange={OnChangenPostTextElements}
                         ref={newPostElements} 
-                        value={props.state.structurePost.newNamePost}/><br/>
+                        value={props.structurePost.newNamePost}/><br/>
 
                     <button className={styles.send_message} onClick={addPost} >Отправить</button>
             </div>
             
             <div>
-                {props.state.structurePost.Post.map( posts => <CreateHTMLPost post={posts.POST} like={posts.Like} SurName={posts.SurName} />)}
+                {props.structurePost.Post.map( posts => <CreateHTMLPost post={posts.POST} like={posts.Like} SurName={posts.SurName} />)}
              </div>
         </div>
     );
