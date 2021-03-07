@@ -5,12 +5,15 @@ import {BrowserRouter, Route} from "react-router-dom";
 
 import App from './App';
 import Store from "./DataBase/redux-store"
+import { Provider } from 'react-redux';
 
 export let renderApp = (state) => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={state} dispatch={Store.dispatch.bind(Store)} />
+        <Provider store={Store}>
+          <App state={state} dispatch={Store.dispatch.bind(Store)} />
+        </Provider>
       </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')

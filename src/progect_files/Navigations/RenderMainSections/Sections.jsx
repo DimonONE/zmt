@@ -7,7 +7,7 @@ import { Route } from "react-router-dom";
 let Section = (props) => {
     return(
         <div className={styles.section}>
-            <Route path="/head" render={ () => <HeadContainer {...props}/>} />
+            <Route path="/head" render={ () => <HeadContainer />} />
             <Route path="/cabinet" render={ () => <Cabinet {...props}/>} />
         </div>
     );
