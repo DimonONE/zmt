@@ -1,25 +1,26 @@
 import React from "react";
 import Dialogs from "./Dialogs"
 import {actionCreateAddMessage, actionCreateUpdateMessageText} from "../../../../DataBase/DialogsReducer"
+import { connect } from "react-redux";
 
 
+const mapStateToProps = (state) => {
+    return{
+        structurDialogs: state.structurDialogs
+    }}
 
-let DialogsConteyner = (props) => {
-    let createOnChange = (text) => {
-        props.dispatch(actionCreateUpdateMessageText(text))
-        console.log(text)
-    }
+const mapDispatchToProps = (dispatch) => {
+    return{
+        actionCreateUpdateMessageText: (text) => {
+            dispatch(actionCreateUpdateMessageText(text))
+        },
 
-    let addMessageElement = () => {
-        props.dispatch(actionCreateAddMessage())
-        props.dispatch(actionCreateUpdateMessageText(""))
-    }
-    
-    return(
-        <Dialogs structurDialogs={props.state.structurDialogs}  
-        actionCreateUpdateMessageText={createOnChange} 
-        actionCreateAddMessage={addMessageElement}/>
-    );
+        actionCreateAddMessage: () => {
+            dispatch(actionCreateAddMessage())
+            dispatch(actionCreateUpdateMessageText(""))
+        }}
 }
+
+const DialogsConteyner = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
 
 export default DialogsConteyner;

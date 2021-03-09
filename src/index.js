@@ -7,23 +7,16 @@ import App from './App';
 import Store from "./DataBase/redux-store"
 import { Provider } from 'react-redux';
 
-export let renderApp = (state) => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
         <Provider store={Store}>
-          <App state={state} dispatch={Store.dispatch.bind(Store)} />
+          <App  />
         </Provider>
       </BrowserRouter>
     </React.StrictMode>,
-    document.getElementById('root')
-  );
-}
+    document.getElementById('root'));
 
-renderApp(Store.getState())
-Store.subscribe( () => {
-  let state = Store.getState()
-  renderApp(state)
-})
+
 
 
