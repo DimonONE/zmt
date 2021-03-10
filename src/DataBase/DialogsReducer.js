@@ -30,22 +30,19 @@ const DialogReducer = (state=initialState, action) => {
                 message: state.newValues
             };
 
-            let copyState = {...state}
-            copyState.MessagesData = [...state.MessagesData] // тут масив
-            copyState.MessagesData.push(newsMesage);
-            return copyState;
+            return{...state, MessagesData: [...state.MessagesData, newsMesage]}
+
         }
         
         case UPDATE_MESSAGE_TEXT: {
-            let copyState = {...state}
-            copyState.newValues = {...state.newValues}
-            copyState.newValues = action.newText;
-            return copyState;
+            return{
+                ...state,
+                newValues: action.newText,
+            }
         }
 
         default:
             return state;
-            
     }
 }
 

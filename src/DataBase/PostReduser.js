@@ -11,6 +11,7 @@ let initailState = {
   }
 
 const PostReduser = (state=initailState, action) => {
+  let stateCopy = {...state}
   switch (action.type){
       case ADD_POST: {
           let newPost = {
@@ -18,22 +19,18 @@ const PostReduser = (state=initailState, action) => {
               POST: state.newNamePost,
               SurName: state.newSurName
           };
-          
-          let copyState = {...state}
-          copyState.Post = [...state.Post]
-          copyState.Post.push(newPost)
-          return copyState;  
+          return {
+            ...state,
+            Post: [...state.Post, newPost]
+          }
         }
 
       case UPDATE_POST: {
-        let copyState = {...state}
-        copyState.newNamePost = {...state.newNamePost}
-        copyState.newNamePost = action.cteate.Posts;
-
-        copyState.newSurName = {...state.newSurName};
-        copyState.newSurName = action.cteate.SurName;
-        
-        return copyState;  
+        return{
+          ...state,
+          newNamePost:  action.cteate.Posts,
+          newSurName:  action.cteate.SurName
+        }
       }
 
       default:
