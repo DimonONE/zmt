@@ -7,11 +7,10 @@ let initailState = {
    ],
 
     newNamePost: "",
-    newSurName:"",
+    newSurName: "",
   }
 
 const PostReduser = (state=initailState, action) => {
-  let stateCopy = {...state}
   switch (action.type){
       case ADD_POST: {
           let newPost = {

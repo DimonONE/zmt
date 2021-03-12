@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState }  from "react";
 import styles from "./Header.module.css";
 
 import logo from '../.././images/logo.jpg'; 
@@ -20,6 +20,7 @@ let Header = (params) => {
                         </div>
                         <div className={styles.nav_item}>
                             <NavLink to="/cabinet">Кабінет</NavLink>
+                            
                         </div>
                         <div className={styles.nav_item}>
                             <NavLink to="/specificals">Спеціальності</NavLink>
@@ -31,7 +32,7 @@ let Header = (params) => {
                             <NavLink to="/contact">Контакти</NavLink>
                         </div>
                         <div className={styles.nav_item}>
-                            <NavLink to="/news">Новини</NavLink>
+                            <NavLink to="/frends">Друзі</NavLink>
                         </div>
                     </div>    
 

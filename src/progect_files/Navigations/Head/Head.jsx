@@ -41,7 +41,6 @@ let Head = (props) => {
     let addPost = () => {
         props.actionCreateAddPost()
     }
-    
     return(
         <div className={styles.mainHead}>
         
@@ -50,19 +49,19 @@ let Head = (props) => {
                     <input 
                         onChange={OnChangenPostTextElements}
                         ref={newSurnameElements} 
-                        value={props.structurePost.newSurName}/>
+                        value={props.structurPost.newSurName}/>
 
                     <h2>Post</h2>
                     <input 
                         onChange={OnChangenPostTextElements}
                         ref={newPostElements} 
-                        value={props.structurePost.newNamePost}/><br/>
+                        value={props.structurPost.newNamePost}/><br/>
 
                     <button className={styles.send_message} onClick={addPost} >Отправить</button>
             </div>
             
             <div>
-                {props.structurePost.Post.map( posts => <CreateHTMLPost post={posts.POST} like={posts.Like} SurName={posts.SurName} />)}
+                {props.structurPost.Post.map( posts => <CreateHTMLPost post={posts.POST} like={posts.Like} SurName={posts.SurName} />)}
              </div>
         </div>
     );
