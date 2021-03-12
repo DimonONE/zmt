@@ -6,28 +6,33 @@
 }
 
 .frendInfo span {
-  display: flex;
-  justify-content: center;
-  margin: 15px 30px;
-  padding: 5px;
-  align-items: center;
-  text-align: center;
+  margin: 10px 15px;
 }
 
 .photo {
   width: 40px;
   height: 40px;
+  margin: 0 auto;
 }
 
 .statusFrends {
   width: 100px;
+  height: 23px;
+  margin-top: 11px;
+  display: flex;
+  justify-content: center;
+}
 
-  height: 40px;
+.statusFrends button {
+  width: 70px;
+  padding: 1px;
+  color: rgb(31, 6, 56);
+  background: rgba(236, 223, 223, 0.521);
+  border-radius: 20%;
 }
 
 .photo img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  margin: 5px;
 }
