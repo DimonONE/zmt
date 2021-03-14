@@ -61,7 +61,25 @@ let Head = (props) => {
             </div>
             
             <div>
-                {props.structurPost.Post.map( posts => <CreateHTMLPost post={posts.POST} like={posts.Like} SurName={posts.SurName} />)}
+                {props.structurPost.Post.map( posts => 
+                // <CreateHTMLPost post={posts.POST} like={posts.Like} SurName={posts.SurName} />
+                
+                <div key={posts.id} className={styles.users_info}>
+                    <div><img src={users_img} alt=""/>
+                        <div>
+                            <h3>{posts.SurName}</h3>
+                            <div className={styles.user_like}>
+                                <h4>POST:</h4>
+                                <p>{posts.POST}</p>
+                            </div>
+                            <div className={styles.user_like}>
+                                <p>Like: </p>
+                                <p>{posts.Like}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                )}
              </div>
         </div>
     );

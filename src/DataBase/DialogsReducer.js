@@ -3,11 +3,11 @@ const UPDATE_MESSAGE_TEXT = "UPDATE-MESSAGE-TEXT";
 
 let initialState = {
     MessagesData:[
-        {name: "Dima", message: "helow"},
-        {name: "Andre", message: "how are you?"},
-        {name: "Miha", message: "how are you?"},
-        {name: "Masha", message: "you?"},
-        {name: "Siroga", message: "how are ?"},
+        {id: 1, name: "Dima", message: "helow"},
+        {id: 2, name: "Andre", message: "how are you?"},
+        {id: 3, name: "Miha", message: "how are you?"},
+        {id: 4, name: "Masha", message: "you?"},
+        {id: 5, name: "Siroga", message: "how are ?"},
     ],
       
     newValues:"",

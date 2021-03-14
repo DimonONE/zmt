@@ -3,15 +3,6 @@ import styles from "./Dialogs.module.css";
 import avatar from '../../../../images/logo.jpg';
 import { NavLink } from "react-router-dom";
 
-const DialogWithUser = (props) => {
-    let path = "/cabinet/chat_id_" + props.Id;
-    return(
-        <div key={props.Id} className={styles.diialog_with_user}>
-            <NavLink className={styles.active} to={path}><h4>{props.name}</h4></NavLink>
-        </div> 
-    )
-}
-
 const Messages = (props) => {
     return (
             <div className={`${styles.message_content} ${styles.nav_messages}`}>
@@ -43,7 +34,11 @@ let Dialogs = (props) => {
     return(
         <div className={styles.Dialog}>
             <div>
-                {props.structurDialogs.DialogData.map( dialog => <DialogWithUser name={dialog.name} Id={dialog.id} /> )}
+                {props.structurDialogs.DialogData.map( dialog =>
+                    <div key={dialog.id} className={styles.diialog_with_user}>
+                        <NavLink className={styles.active} to={"/cabinet/chat_id_" + dialog.id}><h4>{dialog.name}</h4></NavLink>
+                    </div>     
+                )}
             </div>
             
             <div className={styles.messages}>
@@ -59,7 +54,18 @@ let Dialogs = (props) => {
                     </div>
                 </div>
                 <div>
-                    {props.structurDialogs.MessagesData.map( message => <Messages name={message.name} message={message.message}/>)}
+                    {props.structurDialogs.MessagesData.map( m => 
+                        <div key={m.id} className={`${styles.message_content} ${styles.nav_messages}`}>
+                                <div className={styles.row_info}>
+                                    <img  src={avatar} alt=""/>
+                                    <h5>{m.name}</h5>
+                                </div>
+            
+                                <div className={styles.message}>
+                                    <p>{m.message}</p>
+                                </div>
+                        </div>    
+                    )}
 
                     <div className={styles.send_menu}>
                         <input onChange={createOnChange} 

@@ -3,7 +3,7 @@ const UPDATE_POST = "UPDATE_POST";
 
 let initailState = {
     Post: [
-      {POST: "Milk", Like: 1, SurName: "Lomsi"},
+      {id:1, POST: "Milk", Like: 1, SurName: "Lomsi"},
    ],
 
     newNamePost: "",

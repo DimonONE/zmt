@@ -13,8 +13,6 @@ class FrendsPage extends React.Component {
             })
     }
 
-
-
     render() {
         return(
             <div className={styles.FrendsPage}>
