@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 const DialogWithUser = (props) => {
     let path = "/cabinet/chat_id_" + props.Id;
     return(
-        <div className={styles.diialog_with_user}>
+        <div key={props.Id} className={styles.diialog_with_user}>
             <NavLink className={styles.active} to={path}><h4>{props.name}</h4></NavLink>
         </div> 
     )

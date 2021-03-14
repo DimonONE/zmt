@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import FrendsPage from "./frendsPage" 
+import FrendsPage from "./frendsPageCopy" 
 import {actionFrendAC, actionUnFrendAC, setFrendsAC} from "./../../../DataBase/FrendsReducer"
 
 const mapStateToProps = (state) => {
