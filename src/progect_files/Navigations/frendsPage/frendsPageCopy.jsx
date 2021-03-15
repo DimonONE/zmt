@@ -8,17 +8,41 @@ class FrendsPage extends React.Component {
     constructor(props) {
         super(props)
 
-            axios.get("https://social-network.samuraijs.com/api/1.0/users").then( respons => {
-                this.props.setFrends(respons.data.items)
-            })
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.pageActive}&count=${this.props.sizeLinePage}`).then( respons => {
+            this.props.setFrends(respons.data.items)
+            this.props.setCountUserServer(respons.data.totalCount)
+        })
+        
+    }
+
+    onClickChanget = (numPage) => {
+        this.props.ClickNumPage(numPage)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${numPage}&count=${this.props.sizeLinePage}`).then( respons => {
+            this.props.setFrends(respons.data.items)
+        })
     }
 
     render() {
+        let countPage = Math.ceil( this.props.countUserServer / this.props.sizeLinePage )
+        let numPages = []
+
+        for(let i=1; i <= countPage; i++){
+            numPages.push(i);
+        }
+
+
         return(
             <div className={styles.FrendsPage}>
+                <div className={styles.navPage}>
+                    {numPages.map( (page) => {
+                       return <span key={page} 
+                            className={ this.props.pageActive === page ? styles.numNavPage : undefined }
+                            onClick={ (e) => this.onClickChanget(page) }>{page}</span>
+                    } )}
+                </div>
                 <h1>Друзі</h1>
-                <div className={styles.frendInfos}>
-                    {this.props.dataFrends.frends.map( f => 
+                <div className={styles.frendInformations}>
+                    {this.props.dataFrends.map( f => 
                     <div key={f.id} className={styles.frendInfo}> 
                                             <span>
                                                 <div className={styles.photo}><img src={f.photos.small != null ? f.photos.small : userAvatar} alt="NoneFhoto"/></div>
