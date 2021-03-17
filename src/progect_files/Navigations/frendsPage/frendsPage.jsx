@@ -1,22 +1,28 @@
 import React from "react";
 import styles from "./frendsPage.module.css";
-import * as axios from "axios"
 import userAvatar from "../../../images/users.jpg"
 
 
 const FrendsPage = (props) => {
-    if (props.dataFrends.frends.length === 0){
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then( respons => {
-            props.setFrends(respons.data.items)
-        })
-    }
+    let countPage = Math.ceil( props.countUserServer / props.sizeLinePage )
+    let numPages = []
 
+    for(let i=1; i <= countPage; i++){
+        numPages.push(i);
+    }
 
     return(
         <div className={styles.FrendsPage}>
+            <div className={styles.navPage}>
+                    {numPages.map( (page) => {
+                       return <span key={page} 
+                            className={ props.pageActive === page ? styles.numNavPage : undefined }
+                            onClick={ (e) => props.onClickChanget(page) }>{page}</span>
+                    } )}
+            </div>
             <h1>Друзі</h1>
             <div className={styles.frendInfos}>
-                {props.dataFrends.frends.map( f => 
+                {props.dataFrends.map( f => 
                 <div key={f.id} className={styles.frendInfo}> 
                                         <span>
                                             <div className={styles.photo}><img src={f.photos.small != null ? f.photos.small : userAvatar} alt="NoneFhoto"/></div>
