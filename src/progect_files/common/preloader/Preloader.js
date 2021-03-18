@@ -1,8 +1,8 @@
 import React from "react";
-import gifLoad from "../../../images/loading.gif" 
+import gifLoad from "../../../images/Preloaders.svg" 
 
 export const Preloader = (props) => {
-    return <div>
+    return <div className="preloader">
                 <img src={gifLoad} />
             </div>
 }

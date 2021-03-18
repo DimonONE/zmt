@@ -23,10 +23,10 @@ let Header = (params) => {
                             
                         </div>
                         <div className={styles.nav_item}>
-                            <NavLink to="/specificals">Спеціальності</NavLink>
+                            <NavLink to="/news">Новини</NavLink>
                         </div>
                         <div className={styles.nav_item}>
-                            <NavLink to="/student">Студенту</NavLink>
+                            <NavLink to="/profile">Профиль</NavLink>
                         </div>
                         <div className={styles.nav_item}>
                             <NavLink to="/contact">Контакти</NavLink>

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./frendsPage.module.css";
+import { NavLink } from "react-router-dom";
 import userAvatar from "../../../images/users.jpg"
 
 
@@ -25,7 +26,9 @@ const FrendsPage = (props) => {
                 {props.dataFrends.map( f => 
                 <div key={f.id} className={styles.frendInfo}> 
                                         <span>
-                                            <div className={styles.photo}><img src={f.photos.small != null ? f.photos.small : userAvatar} alt="NoneFhoto"/></div>
+                                            <NavLink to={`/profiles/profile${f.id}`}>
+                                                <div className={styles.photo}><img src={f.photos.small != null ? f.photos.small : userAvatar} alt="NoneFhoto"/></div>
+                                            </NavLink>
                                             <div className={styles.statusFrends}>
                                                 {f.statusFrend ?
                                                 <button onClick={ () => {props.statusUnFrend(f.id)} } >Удалить</button> : 
@@ -33,7 +36,9 @@ const FrendsPage = (props) => {
                                             </div>
                                         </span>
                                         <span>
-                                            <div className={styles.name}>{f.name}</div>   
+                                            <NavLink to={`/profiles/profile${f.id}`}>
+                                                <div className={styles.name}>{f.name}</div>   
+                                            </NavLink>
                                             <div className={styles.lastName}>{f.lastName}</div>
                                             <div className={styles.lastName}>{f.status}</div>
                                         </span>
