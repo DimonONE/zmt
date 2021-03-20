@@ -18,7 +18,7 @@ function App(props) {
           <Route path="/head" render={ () => <HeadContainer />} />
           <Route path="/frends" render={ () => <FrendsPageContainer {...props}/>} />
           <Route path="/cabinet" render={ () => <Cabinet {...props}/>} />
-          <Route path="/profiles" render={ () => <ProfileContainer {...props} />} />
+          <Route path="/profiles/:userId" render={ () => <ProfileContainer {...props} />} />
         </div>
       </div>
   );

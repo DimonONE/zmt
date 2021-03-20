@@ -2,15 +2,16 @@ import React from "react";
 import { Preloader } from "../../common/preloader/Preloader";
 
 const Profile = (props) => {
+
     if (!props.profile) {
         return <Preloader />
     }  
+    console.log("Profile")
     return(
-        <div>{props.profile.map( (p) => 
-            <div key={p.id}>
-                <img src={p.photos.large !== null || undefined ? p.photos.large : <div>Nemae</div> } />
-                <p>{p.name}</p>
-            </div>)}
+        <div>
+            <h2>YOU ID: {props.profile.userId}</h2>
+            <img src={props.profile.photos.large !== null || undefined ? props.profile.photos.large : <div>Nemae</div> } />
+            <p>Name: {props.profile.fullName}</p>
         </div>
     ) 
 }

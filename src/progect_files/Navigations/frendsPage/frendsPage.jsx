@@ -26,7 +26,7 @@ const FrendsPage = (props) => {
                 {props.dataFrends.map( f => 
                 <div key={f.id} className={styles.frendInfo}> 
                                         <span>
-                                            <NavLink to={`/profiles/profile${f.id}`}>
+                                            <NavLink to={`/profiles/${f.id}`}>
                                                 <div className={styles.photo}><img src={f.photos.small != null ? f.photos.small : userAvatar} alt="NoneFhoto"/></div>
                                             </NavLink>
                                             <div className={styles.statusFrends}>
@@ -36,7 +36,7 @@ const FrendsPage = (props) => {
                                             </div>
                                         </span>
                                         <span>
-                                            <NavLink to={`/profiles/profile${f.id}`}>
+                                            <NavLink to={`/profiles/${f.id}`}>
                                                 <div className={styles.name}>{f.name}</div>   
                                             </NavLink>
                                             <div className={styles.lastName}>{f.lastName}</div>
