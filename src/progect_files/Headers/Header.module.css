@@ -1,7 +1,7 @@
 /* header */
 .site_header {
   display: flex;
-  background-color: rgba(80, 80, 65, 0.733);
+  background-color: #ffffff;
   width: 100%;
 }
 

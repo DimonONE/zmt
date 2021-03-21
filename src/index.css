@@ -15,7 +15,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background: url("./images/logo.jpg") center top fixed;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 5%,
+    rgba(84, 9, 121, 1) 26%,
+    rgba(27, 49, 96, 1) 56%,
+    rgba(84, 9, 121, 1) 78%,
+    rgba(2, 0, 36, 1) 100%
+  );
 }
 
 body::-webkit-scrollbar {

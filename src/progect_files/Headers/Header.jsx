@@ -4,7 +4,15 @@ import styles from "./Header.module.css";
 import logo from '../.././images/logo.jpg'; 
 import { NavLink } from "react-router-dom";
 
-let Header = (params) => {
+let UserAuth = (props) => {
+    return(
+        <div className={`${styles.proviles}`}>
+            <p>{props.login}</p>
+        </div>  
+    )
+}
+
+let Header = (props) => {
     return(
         <header className={`${styles.site_header}`}>
                     <div className={`${styles.logo} `}>
@@ -35,14 +43,12 @@ let Header = (params) => {
                             <NavLink to="/frends">Друзі</NavLink>
                         </div>
                     </div>    
-
-                    <div className={`${styles.proviles} col-3`}>
-                        <a href=""> <p>{params.user}</p></a>
-
-                        <a href=""><p>Регистрація</p></a>
-                        <p>/</p>
-                        <a href=""><p>Вхід</p></a>
-                    </div>                           
+                    {props.isAutorized ? <UserAuth login = {props.login} />  :  
+                        <div className={`${styles.proviles}`}>
+                            <NavLink to="/reg"><p>Регистрація</p></NavLink>
+                            <NavLink to="/login"><p>Вхід</p></NavLink>
+                        </div>  }
+                                             
         </header>
 
     );
