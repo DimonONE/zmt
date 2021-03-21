@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import userAvatar from "../../../images/users.jpg"
 
 import axios from "axios";
+import { folowUser, unFolowUser } from "../../../API/API";
 
 
 
@@ -34,28 +35,21 @@ const FrendsPage = (props) => {
                                             <div className={styles.statusFrends}>
                                                 {f.statusFrend ?
                                                 <button onClick={ () => {
-                                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${f.id}`, 
-                                                    {withCredentials: true,
-                                                    headers: {
-                                                        "API-KEY": "1cdd557f-6df8-4706-98d5-0eb159dfa69e"
-                                                    }})
+                                                    unFolowUser(f.id)
                                                     .then( respons => {
-                                                        if ( respons.data.resultCode == 0){
+                                                        if ( respons.resultCode == 0){
                                                             props.statusUnFrend(f.id)
                                                         }
                                                     })
                                                 }} >Удалить</button> : 
 
                                                 <button onClick={ () => {
-                                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${f.id}`, {}, 
-                                                    {withCredentials: true, headers: {
-                                                        'API-KEY': '1cdd557f-6df8-4706-98d5-0eb159dfa69e'}})
+                                                    folowUser(f.id)
                                                     .then( respons => {
-                                                        if ( respons.data.resultCode == 0){
+                                                        if ( respons.resultCode == 0){
                                                             props.statusFrend(f.id)
                                                         }
                                                     })
-                                                    debugger
                                                 }} >Добавить</button> }
                                             </div>
                                         </span>

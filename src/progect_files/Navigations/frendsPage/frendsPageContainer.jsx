@@ -6,29 +6,27 @@ import * as axios from "axios"
 import {statusFrend, statusUnFrend, setFrends, ClickNumPage, 
         setCountUserServer, isToggelLoad,} from "../../../DataBase/FrendsReducer"
 import { Preloader } from "../../common/preloader/Preloader";
+import { getUsers, getUsersChanget } from "../../../API/API";
 
 class FrendsAPIContainer extends React.Component {
     constructor(props) {
         super(props)
         this.props.isToggelLoad(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.pageActive}&count=${this.props.sizeLinePage}`,
-            {withCredentials: true})
+        getUsers(this.props.pageActive, this.props.sizeLinePage)
         .then( respons => {
             this.props.isToggelLoad(false)
-            this.props.setFrends(respons.data.items)
-            this.props.setCountUserServer(respons.data.totalCount)
+            this.props.setFrends(respons.items)
+            this.props.setCountUserServer(respons.totalCount)
         })
     }
 
     onClickChanget = (numPage) => {
         this.props.ClickNumPage(numPage)
         this.props.isToggelLoad(true)
-
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${numPage}&count=${this.props.sizeLinePage}`,
-            {withCredentials: true})
+        getUsersChanget(numPage, this.props.sizeLinePage)
         .then( respons => {
             this.props.isToggelLoad(false)
-            this.props.setFrends(respons.data.items)
+            this.props.setFrends(respons.items)
         })
     }
 
