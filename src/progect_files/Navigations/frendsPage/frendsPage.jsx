@@ -3,6 +3,9 @@ import styles from "./frendsPage.module.css";
 import { NavLink } from "react-router-dom";
 import userAvatar from "../../../images/users.jpg"
 
+import axios from "axios";
+
+
 
 const FrendsPage = (props) => {
     let countPage = Math.ceil( props.countUserServer / props.sizeLinePage )
@@ -11,7 +14,6 @@ const FrendsPage = (props) => {
     for(let i=1; i <= countPage; i++){
         numPages.push(i);
     }
-
     return(
         <div className={styles.FrendsPage}>
             <div className={styles.navPage}>
@@ -31,8 +33,30 @@ const FrendsPage = (props) => {
                                             </NavLink>
                                             <div className={styles.statusFrends}>
                                                 {f.statusFrend ?
-                                                <button onClick={ () => {props.statusUnFrend(f.id)} } >Удалить</button> : 
-                                                <button onClick={ () => {props.statusFrend(f.id)} } >Добавить</button> }
+                                                <button onClick={ () => {
+                                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${f.id}`, 
+                                                    {withCredentials: true,
+                                                    headers: {
+                                                        "API-KEY": "1cdd557f-6df8-4706-98d5-0eb159dfa69e"
+                                                    }})
+                                                    .then( respons => {
+                                                        if ( respons.data.resultCode == 0){
+                                                            props.statusUnFrend(f.id)
+                                                        }
+                                                    })
+                                                }} >Удалить</button> : 
+
+                                                <button onClick={ () => {
+                                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${f.id}`, {}, 
+                                                    {withCredentials: true, headers: {
+                                                        'API-KEY': '1cdd557f-6df8-4706-98d5-0eb159dfa69e'}})
+                                                    .then( respons => {
+                                                        if ( respons.data.resultCode == 0){
+                                                            props.statusFrend(f.id)
+                                                        }
+                                                    })
+                                                    debugger
+                                                }} >Добавить</button> }
                                             </div>
                                         </span>
                                         <span>
