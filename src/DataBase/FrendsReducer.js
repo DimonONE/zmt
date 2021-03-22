@@ -4,6 +4,7 @@ const SET_USERS = "SET_USERS";
 const CLICK_NUP_PAGE = "CLICK_NUP_PAGE"
 const COUNT_USER_SERVER = "COUNT_USER_SERVER"
 const IS_LOADING_TOGGLE = "IS_LOADING_TOGGLE"
+const DISABLE_BUTTON_FRENDS = "DISABLE_BUTTON_FRENDS"
 
 let initialState = {
     frends:[],
@@ -11,7 +12,7 @@ let initialState = {
     countUserServer: 5,
     pageActive: 1,
     isPageLoading: false,
-
+    isDisablet: [],
 }
 
 const FrendReducer = (state=initialState, action) => {
@@ -48,6 +49,16 @@ const FrendReducer = (state=initialState, action) => {
             
         case IS_LOADING_TOGGLE:
             return {...state, isPageLoading: action.isLoading}
+
+        case IS_LOADING_TOGGLE:
+            return {...state, isPageLoading: action.isLoading}
+
+        case DISABLE_BUTTON_FRENDS:
+            return {...state, isDisablet: action.isDisablet 
+                ? [...state.isDisablet, action.userId]
+                : state.isDisablet.filter( (id) => id != action.userId)}
+        
+     
         
         default:
             return state;
@@ -60,6 +71,7 @@ export const setFrends = (frends) => ({type: SET_USERS, frends})
 export const ClickNumPage = (page) => ({type: CLICK_NUP_PAGE, page})
 export const setCountUserServer = (count) => ({type:  COUNT_USER_SERVER, count})
 export const isToggelLoad = (isLoading) => ({type:  IS_LOADING_TOGGLE, isLoading})
+export const disableButtonsFrends = (isDisablet, userId) => ({type: DISABLE_BUTTON_FRENDS, isDisablet, userId})
 
 
 export default FrendReducer;

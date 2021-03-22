@@ -3,7 +3,6 @@ import styles from "./frendsPage.module.css";
 import { NavLink } from "react-router-dom";
 import userAvatar from "../../../images/users.jpg"
 
-import axios from "axios";
 import { folowUser, unFolowUser } from "../../../API/API";
 
 
@@ -34,21 +33,23 @@ const FrendsPage = (props) => {
                                             </NavLink>
                                             <div className={styles.statusFrends}>
                                                 {f.statusFrend ?
-                                                <button onClick={ () => {
-                                                    unFolowUser(f.id)
-                                                    .then( respons => {
+                                                <button disabled={props.isDisablet.some( (id) => id === f.id)} onClick={ () => {
+                                                    props.disableButtonsFrends(true, f.id)
+                                                    unFolowUser(f.id).then( respons => {
                                                         if ( respons.resultCode == 0){
                                                             props.statusUnFrend(f.id)
                                                         }
+                                                        props.disableButtonsFrends(false, f.id)
                                                     })
                                                 }} >Удалить</button> : 
 
-                                                <button onClick={ () => {
-                                                    folowUser(f.id)
-                                                    .then( respons => {
+                                                <button disabled={props.isDisablet.some( (id) => id === f.id)} onClick={ () => {
+                                                    props.disableButtonsFrends(true, f.id)
+                                                    folowUser(f.id).then( respons => {
                                                         if ( respons.resultCode == 0){
                                                             props.statusFrend(f.id)
                                                         }
+                                                        props.disableButtonsFrends(false, f.id)
                                                     })
                                                 }} >Добавить</button> }
                                             </div>

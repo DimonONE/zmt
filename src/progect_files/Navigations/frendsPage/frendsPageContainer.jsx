@@ -1,10 +1,9 @@
 import { connect } from "react-redux";
 import FrendsPage from "./frendsPage" 
 import React from "react";
-import * as axios from "axios"
 
 import {statusFrend, statusUnFrend, setFrends, ClickNumPage, 
-        setCountUserServer, isToggelLoad,} from "../../../DataBase/FrendsReducer"
+        setCountUserServer, isToggelLoad, disableButtonsFrends} from "../../../DataBase/FrendsReducer"
 import { Preloader } from "../../common/preloader/Preloader";
 import { getUsers, getUsersChanget } from "../../../API/API";
 
@@ -44,6 +43,8 @@ class FrendsAPIContainer extends React.Component {
                             ClickNumPage={this.props.ClickNumPage}  
                             setCountUserServer={this.props.setCountUserServer}     
                             isPageLoading={this.props.isToggelLoad}      
+                            isDisablet={this.props.isDisablet}
+                            disableButtonsFrends={this.props.disableButtonsFrends}      
                             onClickChanget={this.onClickChanget}       
                             /> }
                 </>
@@ -57,10 +58,11 @@ const mapStateToProps = (state) => {
         countUserServer: state.structurFrends.countUserServer,
         pageActive: state.structurFrends.pageActive,
         isPageLoading: state.structurFrends.isPageLoading,
+        isDisablet: state.structurFrends.isDisablet,
     }
 }
 
 const FrendsPageContainer = connect(mapStateToProps, {statusFrend, statusUnFrend, setFrends, ClickNumPage, 
-    setCountUserServer, isToggelLoad, })(FrendsAPIContainer)
+    setCountUserServer, isToggelLoad, disableButtonsFrends })(FrendsAPIContainer)
 
 export default  FrendsPageContainer;
