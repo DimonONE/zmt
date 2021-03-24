@@ -1,3 +1,5 @@
+import { userAPI } from "../API/API"
+
 const SET_USER_INFO = "SET_USER_INFO"
 
 const initiaState = {
@@ -15,5 +17,12 @@ const ProfileReduser = (state=initiaState, action) => {
 }
 
 export const setProfileUsers = (setProfile) => ({type: SET_USER_INFO, setProfile })
+
+
+export const profileUsersThunk = (userId) => (dispath) => {
+    userAPI.getProfile(userId).then( respons => {
+        dispath( setProfileUsers(respons.data) )
+    })
+}
 
 export default ProfileReduser;

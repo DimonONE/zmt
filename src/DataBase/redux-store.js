@@ -1,9 +1,10 @@
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import PostReduser from "./PostReduser"
 import DialogReducer from "./DialogsReducer"
 import FrendsReducer from "./FrendsReducer"
 import ProfileReduser from "./ProfileReduser";
 import AuthReduser from "./authReducer";
+import thunkMidleware from 'redux-thunk';
 
 let redusers = combineReducers({
     structurPost: PostReduser,
@@ -13,7 +14,7 @@ let redusers = combineReducers({
     auth: AuthReduser,
 })
 
-let store = createStore(redusers);
+let store = createStore(redusers, applyMiddleware( thunkMidleware ));
 
 window.store = store
 

@@ -1,3 +1,5 @@
+import { userAPI } from "../API/API";
+
 const FREND = "FREND";
 const UNFREND = "UNFREND";
 const SET_USERS = "SET_USERS";
@@ -26,7 +28,7 @@ const FrendReducer = (state=initialState, action) => {
                         return f
                     }) 
                 }
-        
+                
         case UNFREND:
             return {...state, 
                 frends: state.frends.map( (f) => {
@@ -57,10 +59,8 @@ const FrendReducer = (state=initialState, action) => {
             return {...state, isDisablet: action.isDisablet 
                 ? [...state.isDisablet, action.userId]
                 : state.isDisablet.filter( (id) => id != action.userId)}
-        
-     
-        
-        default:
+
+                default:
             return state;
     }
 }
@@ -73,5 +73,54 @@ export const setCountUserServer = (count) => ({type:  COUNT_USER_SERVER, count})
 export const isToggelLoad = (isLoading) => ({type:  IS_LOADING_TOGGLE, isLoading})
 export const disableButtonsFrends = (isDisablet, userId) => ({type: DISABLE_BUTTON_FRENDS, isDisablet, userId})
 
+export const getFrendsThunkCreater = (pageActive, sizeLinePage) => {
+    return (dispath) => {
+        dispath(isToggelLoad(true))
+        userAPI.getUsers(pageActive, sizeLinePage)
+        .then( respons => {
+            dispath(isToggelLoad(false))
+            dispath(setFrends(respons.items))
+            dispath(setCountUserServer(respons.totalCount))
+        })
+    }
+}
+
+export const clickNewPage = (numPage, sizeLinePage) => {
+    return (dispath) => {
+        dispath( ClickNumPage(numPage) )
+        dispath( isToggelLoad(true) )
+
+        userAPI.getUsersChanget(numPage, sizeLinePage)
+        .then( respons => {
+            dispath(isToggelLoad(false))
+            dispath(setFrends(respons.items))
+            }
+        )
+    }
+}
+
+export const deliteFrend = (id) => {
+    return (dispath) => {
+        dispath( disableButtonsFrends(true, id) )
+        userAPI.unFolowUser(id).then( respons => {
+            if ( respons.resultCode == 0){
+                dispath( statusUnFrend(id) )
+            }
+            dispath( disableButtonsFrends(false, id) )
+        })
+    }
+}
+
+export const addFrend = (id) => {
+    return (dispath) => {
+        dispath( disableButtonsFrends(true, id) )
+        userAPI.folowUser(id).then( respons => {
+            if ( respons.resultCode == 0){
+                dispath( statusFrend(id) )
+            }
+            dispath( disableButtonsFrends(false, id) )
+        })
+    }
+}
 
 export default FrendReducer;

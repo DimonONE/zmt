@@ -1,23 +1,18 @@
 import React from "react";
 import { withRouter } from "react-router";
-import * as axios from "axios"
 import Profile from "./Profile";
 import { connect } from "react-redux";
-import { setProfileUsers } from "../../../DataBase/ProfileReduser";
+import { setProfileUsers, profileUsersThunk } from "../../../DataBase/ProfileReduser";
 
 class ProfileContainerAPI  extends React.Component {
+
     componentDidMount(){
         let userId = this.props.match.params.userId
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then( respons => {
-            this.props.setProfileUsers(respons.data)
-        })
+        this.props.profileUsersThunk(userId)
     }
 
     render(){
-        
-        return <div>
-                    <Profile profile={this.props.profile}/>
-                </div>
+        return <Profile profile={this.props.profile}/>
     }
 }
 
@@ -26,6 +21,6 @@ const mapStateToProps = (state) => ({
 })
 
 let WintRouterContainer = withRouter(ProfileContainerAPI)
-const ProfileContainer = connect(mapStateToProps, {setProfileUsers} )(WintRouterContainer)
+const ProfileContainer = connect(mapStateToProps, {setProfileUsers, profileUsersThunk} )(WintRouterContainer)
 
 export default  ProfileContainer;

@@ -3,10 +3,6 @@ import styles from "./frendsPage.module.css";
 import { NavLink } from "react-router-dom";
 import userAvatar from "../../../images/users.jpg"
 
-import { folowUser, unFolowUser } from "../../../API/API";
-
-
-
 const FrendsPage = (props) => {
     let countPage = Math.ceil( props.countUserServer / props.sizeLinePage )
     let numPages = []
@@ -21,7 +17,7 @@ const FrendsPage = (props) => {
                        return <span key={page} 
                             className={ props.pageActive === page ? styles.numNavPage : undefined }
                             onClick={ (e) => props.onClickChanget(page) }>{page}</span>
-                    } )}
+                    })}
             </div>
             <h1>Друзі</h1>
             <div className={styles.frendInfos}>
@@ -33,25 +29,11 @@ const FrendsPage = (props) => {
                                             </NavLink>
                                             <div className={styles.statusFrends}>
                                                 {f.statusFrend ?
-                                                <button disabled={props.isDisablet.some( (id) => id === f.id)} onClick={ () => {
-                                                    props.disableButtonsFrends(true, f.id)
-                                                    unFolowUser(f.id).then( respons => {
-                                                        if ( respons.resultCode == 0){
-                                                            props.statusUnFrend(f.id)
-                                                        }
-                                                        props.disableButtonsFrends(false, f.id)
-                                                    })
-                                                }} >Удалить</button> : 
+                                                <button disabled={props.isDisablet.some( (id) => id === f.id)} 
+                                                onClick={ () => { props.deliteFrend(f.id)}} >Удалить</button> : 
 
-                                                <button disabled={props.isDisablet.some( (id) => id === f.id)} onClick={ () => {
-                                                    props.disableButtonsFrends(true, f.id)
-                                                    folowUser(f.id).then( respons => {
-                                                        if ( respons.resultCode == 0){
-                                                            props.statusFrend(f.id)
-                                                        }
-                                                        props.disableButtonsFrends(false, f.id)
-                                                    })
-                                                }} >Добавить</button> }
+                                                <button disabled={props.isDisablet.some( (id) => id === f.id)} 
+                                                onClick={ () => {props.addFrend(f.id)}} >Добавить</button> }
                                             </div>
                                         </span>
                                         <span>
@@ -65,7 +47,6 @@ const FrendsPage = (props) => {
                                             <div className={styles.lastName}>{"f.location.country"}</div>
                                             <div className={styles.lastName}>{"f.location.city"}</div>
                                         </span>
-                                        
                 </div>)}
             </div>
         </div>
