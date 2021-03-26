@@ -4,6 +4,8 @@ import React from "react";
 
 import { getFrendsThunkCreater, clickNewPage,  deliteFrend, addFrend } from "../../../DataBase/FrendsReducer"
 import { Preloader } from "../../common/preloader/Preloader";
+import { Redirect } from "react-router";
+import { withLoginRedirect } from "../../../hok/withLoginsRedirect";
 
 class FrendsAPIContainer extends React.Component {
     constructor(props) {
@@ -41,10 +43,14 @@ const mapStateToProps = (state) => {
         pageActive: state.structurFrends.pageActive,
         isPageLoading: state.structurFrends.isPageLoading,
         isDisablet: state.structurFrends.isDisablet,
+
+        isAutorized: state.auth.isAutorized
     }
 }
 
+const WithAuthRedirect = withLoginRedirect( FrendsAPIContainer )
+
 const FrendsPageContainer = connect(mapStateToProps, { 
-      getFrendsThunkCreater, clickNewPage, deliteFrend, addFrend })(FrendsAPIContainer)
+      getFrendsThunkCreater, clickNewPage, deliteFrend, addFrend })(WithAuthRedirect)
 
 export default  FrendsPageContainer;

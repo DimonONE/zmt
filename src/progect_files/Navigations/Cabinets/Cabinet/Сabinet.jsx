@@ -4,10 +4,11 @@ import styles from "./Cabinet.module.css";
 import DialogsContainer from "../Dialogs/DialogsContainer";
 
 let Cabinet = (props) => {
+
     return(
         <div className={styles.user_panel}>
             <div className="Dialogs_main">
-                <DialogsContainer {...props} dispatch={props.dispatch}/>
+                <DialogsContainer />
             </div>
             <div className={styles.info}>
                 <div className={styles.Avatar}>

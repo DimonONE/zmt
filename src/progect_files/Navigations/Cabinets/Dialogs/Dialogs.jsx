@@ -1,30 +1,13 @@
 import React from "react";
 import styles from "./Dialogs.module.css";
 import avatar from '../../../../images/logo.jpg';
-import { NavLink } from "react-router-dom";
-
-const Messages = (props) => {
-    return (
-            <div className={`${styles.message_content} ${styles.nav_messages}`}>
-                    <div className={styles.row_info}>
-                        <img  src={avatar} alt=""/>
-                        <h5>{props.name}</h5>
-                    </div>
-
-                    <div className={styles.message}>
-                        <p>{props.message}</p>
-                    </div>
-            </div>
-    )
-}
-
+import { NavLink, Redirect } from "react-router-dom";
 
 let Dialogs = (props) => {
     
     let createOnChange = (e) => {
         let text = e.target.value;
         props.actionCreateUpdateMessageText(text)
-        // console.log(text)
     }
 
     let addMessageElement = () => {
