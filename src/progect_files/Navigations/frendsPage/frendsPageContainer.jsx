@@ -6,6 +6,7 @@ import { getFrendsThunkCreater, clickNewPage,  deliteFrend, addFrend } from "../
 import { Preloader } from "../../common/preloader/Preloader";
 import { Redirect } from "react-router";
 import { withLoginRedirect } from "../../../hok/withLoginsRedirect";
+import { compose } from "redux";
 
 class FrendsAPIContainer extends React.Component {
     constructor(props) {
@@ -48,9 +49,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-const WithAuthRedirect = withLoginRedirect( FrendsAPIContainer )
+export default compose(
+    connect(mapStateToProps, { getFrendsThunkCreater, clickNewPage, deliteFrend, addFrend }),
+    withLoginRedirect)
+    ( FrendsAPIContainer )
 
-const FrendsPageContainer = connect(mapStateToProps, { 
-      getFrendsThunkCreater, clickNewPage, deliteFrend, addFrend })(WithAuthRedirect)
-
-export default  FrendsPageContainer;
