@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { AuthMeThunk } from "../../DataBase/authReducer";
+import { AuthMeThunk, ExitUserAccount } from "../../DataBase/authReducer";
 import Header from "./Header";
 
 class HeadeComponentAPI extends React.Component {
@@ -11,7 +11,9 @@ class HeadeComponentAPI extends React.Component {
 
     render(){
         return(
-            <Header {...this.props.data} />
+            <>
+                <Header {...this.props.data} loginExit={this.props.ExitUserAccount} />
+            </>
         )
     }
 }
@@ -19,4 +21,4 @@ class HeadeComponentAPI extends React.Component {
 let mapStateToProps = (state) => ({
      data: state.auth
 })
-export const HeadeContainer = connect(mapStateToProps, { AuthMeThunk })(HeadeComponentAPI)
+export const HeadeContainer = connect(mapStateToProps, { AuthMeThunk, ExitUserAccount })(HeadeComponentAPI)

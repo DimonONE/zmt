@@ -1,5 +1,7 @@
-import { authAPI } from "../API/API"
+import { authAPI, userAPI } from "../API/API"
 
+const AUTH_USER = "AUTH_USER"
+const EXIT_USER = "EXIT_USER"
 const SET_AUTH_USER = "SET_AUTH_USER"
 const  NOT_AUTHORIZED = "NOT_AUTHORIZED"
 
@@ -7,6 +9,7 @@ const  NOT_AUTHORIZED = "NOT_AUTHORIZED"
 const initiaState = {
     id: null,
     email: null,
+    password: null,
     login: null,
     isAutorized: false,
 
@@ -14,6 +17,12 @@ const initiaState = {
 
 const AuthReduser = (state=initiaState, action) => {
     switch(action.type){
+        case AUTH_USER :
+            return {isAutorized: true}
+        
+        case EXIT_USER :
+            return {isAutorized: false}
+
         case SET_AUTH_USER:
             return {...state,
                     ...action.data,
@@ -27,7 +36,27 @@ const AuthReduser = (state=initiaState, action) => {
     }
 }
 
+export const AuthUser = () => ({type:SET_AUTH_USER})
+export const ExitUser = () => ({type:EXIT_USER})
 export const setAuthUser = (id, email, login) => ({type:SET_AUTH_USER, data: {id, email, login}})
+
+export const LoginingUser = ( dataLogin ) => (dispatch) => {
+        userAPI.logining(dataLogin.login, dataLogin.password, dataLogin.rememberMe ).then( respons => {
+           if(respons.data.resultCode === 0){
+               dispatch(AuthUser())
+            }
+        })
+}
+
+export const ExitUserAccount = () => (dispatch) => {
+        userAPI.loginExit().then( respons => {
+            console.log(respons)
+           if(respons.data.resultCode === 0){
+               dispatch(ExitUser())
+            }
+        })
+}
+
 export const AuthMeThunk = () => (dispatch) => {
         authAPI.authMe().then( respons => {
             if (respons.data.resultCode === 0) {
