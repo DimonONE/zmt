@@ -13,7 +13,7 @@ const Profile = (props) => {
             <h2>YOU ID: {props.profile.userId}</h2>
             <img src={props.profile.photos.large !== null || undefined ? props.profile.photos.large : <div>Nemae</div> } />
             <p>Name: {props.profile.fullName}</p>
-            <ProfileStatus status="I`am not gey"/>
+            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
         </div>
     ) 
 }
