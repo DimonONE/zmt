@@ -1,0 +1,9 @@
+.erorsForm.erors input {
+  border: 2px solid red;
+}
+
+.erorsForm.erors span {
+  color: rgb(255, 0, 0);
+  font-size: 14px;
+  box-shadow: 1px 1px 11px black;
+}

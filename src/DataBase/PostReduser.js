@@ -8,10 +8,11 @@ let initailState = {
 const PostReduser = (state=initailState, action) => {
   switch (action.type){
       case ADD_POST: {
-        let newsPost = () => {
-          return {POST: action.post, SurName: action.SurName}
+        let newsPost = {
+          POST: action.post,
+          SurName: action.SurName
         }
-        return{...state.Post.push(newsPost) }
+        return{...state, Post: [...state.Post, newsPost] }
       }
 
       default:

@@ -3,6 +3,8 @@ import styles from "./Head.module.css";
 
 import users_img from '../../../images/users.jpg'; 
 import { Field, reduxForm } from "redux-form";
+import { required, maxLengths } from "../../../helpers/validators/validator";
+import { Inputs } from "../../common/FormsControls/FormControls";
 
 
 const CreateHTMLPost = (props) => {
@@ -24,14 +26,16 @@ const CreateHTMLPost = (props) => {
     </div>     
     )}
 
+
+const MaxLength = maxLengths(5)
 const PostForm = (props) => {
     return <>
              <form onSubmit={props.handleSubmit}>
                     <h2>SurName</h2>  
-                    <Field component={"input"} name={"SurName"}/>
+                    <Field component={Inputs} name={"SurName"} validate={[required, MaxLength]} />
 
                     <h2>Post</h2>
-                    <Field  component={"input"} name={"NamePost"} />
+                    <Field  component={Inputs} validate={[required, MaxLength]} name={"NamePost"} />
                     <button className={styles.send_message}>Отправить</button>
                 </form>
         </>
@@ -41,7 +45,7 @@ const PostFormRF = reduxForm({form: "posts"})(PostForm)
 let Head = (props) => {
     let onSubmit = (postValue) => {
         console.log(postValue);
-        props.AddPosts(postValue.SurName, postValue.NamePost )
+        props.AddPosts(postValue.NamePost, postValue.SurName  )
     }
     
 
