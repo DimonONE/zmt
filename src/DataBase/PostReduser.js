@@ -1,35 +1,17 @@
 const ADD_POST = "ADD_POST";
-const UPDATE_POST = "UPDATE_POST";
 
 let initailState = {
-    Post: [
-      {id:1, POST: "Milk", Like: 1, SurName: "Lomsi"},
-   ],
-
-    newNamePost: "",
-    newSurName: "",
+    Post: [{id:1, POST: "Milk", Like: 1, SurName: "Lomsi"}],
+    
   }
 
 const PostReduser = (state=initailState, action) => {
   switch (action.type){
       case ADD_POST: {
-          let newPost = {
-              Like: 1,
-              POST: state.newNamePost,
-              SurName: state.newSurName
-          };
-          return {
-            ...state,
-            Post: [...state.Post, newPost]
-          }
+        let newsPost = () => {
+          return {POST: action.post, SurName: action.SurName}
         }
-
-      case UPDATE_POST: {
-        return{
-          ...state,
-          newNamePost:  action.cteate.Posts,
-          newSurName:  action.cteate.SurName
-        }
+        return{...state.Post.push(newsPost) }
       }
 
       default:
@@ -37,15 +19,11 @@ const PostReduser = (state=initailState, action) => {
   }
 }
 
-export const actionCreateAddPost = () => ({type: ADD_POST})
-export const actionCreateUpdatePost = (post, SurName) => {
-  return (
-    {type: UPDATE_POST,
-    cteate:{
-      Posts:post,
-      SurName: SurName,
-    }}
-    )
+const setAddPosts = (post, SurName) => ({type: ADD_POST, post, SurName})
+
+export const AddPosts = (post, SurName) => (distatch) => {
+    distatch( setAddPosts(post, SurName) )
 }
+
 
 export default PostReduser;

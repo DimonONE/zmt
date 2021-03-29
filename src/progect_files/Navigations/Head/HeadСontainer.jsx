@@ -1,6 +1,6 @@
 
 import Head from "./Head"
-import {actionCreateAddPost, actionCreateUpdatePost} from "../../../DataBase/PostReduser"
+import {AddPosts} from "../../../DataBase/PostReduser"
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
@@ -8,19 +8,8 @@ const mapStateToProps = (state) => {
         structurPost: state.structurPost
     }
 }
-const mapDispatchToProps = (dispatch) => {
-    return{
-        actionCreateUpdatePost: (post, Surname) => {
-            dispatch(actionCreateUpdatePost(post, Surname))
-        },
-        
-        actionCreateAddPost: () =>  {
-            dispatch(actionCreateAddPost())
-            dispatch(actionCreateUpdatePost("", ""))
-        }
-    }
-}
 
-const HeadContainer = connect(mapStateToProps, mapDispatchToProps)(Head)
+
+const HeadContainer = connect(mapStateToProps, {AddPosts})(Head)
 
 export default HeadContainer;

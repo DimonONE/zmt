@@ -20,7 +20,6 @@ const FormLogin = (props) => {
     )
 }
 
-
 const FormLoginRedux = reduxForm({form: 'login'})(FormLogin)
 
 const LoginPage = (props) => {

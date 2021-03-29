@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Head.module.css";
 
 import users_img from '../../../images/users.jpg'; 
+import { Field, reduxForm } from "redux-form";
 
 
 const CreateHTMLPost = (props) => {
@@ -23,41 +24,32 @@ const CreateHTMLPost = (props) => {
     </div>     
     )}
 
+const PostForm = (props) => {
+    return <>
+             <form onSubmit={props.handleSubmit}>
+                    <h2>SurName</h2>  
+                    <Field component={"input"} name={"SurName"}/>
+
+                    <h2>Post</h2>
+                    <Field  component={"input"} name={"NamePost"} />
+                    <button className={styles.send_message}>Отправить</button>
+                </form>
+        </>
+}
+const PostFormRF = reduxForm({form: "posts"})(PostForm)
 
 let Head = (props) => {
-    let newPostElements = React.createRef();
-    let newSurnameElements = React.createRef();
-
-    let OnChangenPostTextElements = () => {
-        let post = newPostElements.current.value;
-        let Surname = newSurnameElements.current.value;
-        props.actionCreateUpdatePost(post, Surname)
-        
-        console.log(post)
-        console.log(Surname)
-
+    let onSubmit = (postValue) => {
+        console.log(postValue);
+        props.AddPosts(postValue.SurName, postValue.NamePost )
     }
+    
 
-    let addPost = () => {
-        props.actionCreateAddPost()
-    }
     return(
         <div className={styles.mainHead}>
         
             <div className={styles.send_menu}>
-                <h2>SurName</h2>  
-                    <input 
-                        onChange={OnChangenPostTextElements}
-                        ref={newSurnameElements} 
-                        value={props.structurPost.newSurName}/>
-
-                    <h2>Post</h2>
-                    <input 
-                        onChange={OnChangenPostTextElements}
-                        ref={newPostElements} 
-                        value={props.structurPost.newNamePost}/><br/>
-
-                    <button className={styles.send_message} onClick={addPost} >Отправить</button>
+                <PostFormRF onSubmit={onSubmit} />
             </div>
             
             <div>

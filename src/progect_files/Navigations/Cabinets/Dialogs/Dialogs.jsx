@@ -2,16 +2,22 @@ import React from "react";
 import styles from "./Dialogs.module.css";
 import avatar from '../../../../images/logo.jpg';
 import { NavLink, Redirect } from "react-router-dom";
+import { Field, reduxForm } from "redux-form";
+
+let FormSendMessages = (props) => {
+    return <form onSubmit={props.handleSubmit}>
+                <Field placeholder="Enter you message" component={"input"} name={"sendMessage"}/>
+                <button className={styles.send_message}>Отправить</button>
+            </form>
+}
+
+let FormSMRedux = reduxForm( {form: "sendMessage"} )(FormSendMessages)
 
 let Dialogs = (props) => {
-    
-    let createOnChange = (e) => {
-        let text = e.target.value;
-        props.actionCreateUpdateMessageText(text)
-    }
+    let onSubmit = (values) => {
+        console.log(values);
+        props.AddMessage(values.sendMessage)
 
-    let addMessageElement = () => {
-        props.actionCreateAddMessage()
     }
 
     return(
@@ -51,15 +57,14 @@ let Dialogs = (props) => {
                     )}
 
                     <div className={styles.send_menu}>
-                        <input onChange={createOnChange} 
-                        placeholder="Enter you message"
-                        value={props.structurDialogs.newValues}/>
-                        <button className={styles.send_message} onClick={ addMessageElement }>Отправить</button>
+                        <FormSMRedux onSubmit={onSubmit} />
                     </div>
                 </div>
             </div>
         </div>
     );
 }
+
+
 
 export default Dialogs;
