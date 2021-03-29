@@ -1,8 +1,8 @@
 import { authAPI, userAPI } from "../API/API"
+import { stopSubmit  } from "redux-form"
 
 const EXIT_USER = "EXIT_USER"
 const SET_AUTH_USER = "SET_AUTH_USER"
-const  NOT_AUTHORIZED = "NOT_AUTHORIZED"
 
 
 const initiaState = {
@@ -23,10 +23,6 @@ const AuthReduser = (state=initiaState, action) => {
             return {...state,
                     ...action.data,
                     isAutorized: true}
-
-        case NOT_AUTHORIZED:
-            return null
-
         default:
             return state
     }
@@ -49,6 +45,8 @@ export const LoginingUser = ( dataLogin ) => (dispatch) => {
         userAPI.logining(dataLogin.login, dataLogin.password, dataLogin.rememberMe ).then( respons => {
            if(respons.data.resultCode === 0){
                dispatch(AuthMeThunk())
+            } else {
+                dispatch(stopSubmit("login", {_error: respons.data.messages}))
             }
         })
 }

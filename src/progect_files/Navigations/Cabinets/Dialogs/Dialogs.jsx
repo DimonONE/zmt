@@ -3,10 +3,14 @@ import styles from "./Dialogs.module.css";
 import avatar from '../../../../images/logo.jpg';
 import { NavLink, Redirect } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
+import { required } from "../../../../helpers/validators/validator";
+import { Inputs } from "../../../common/FormsControls/FormControls";
 
 let FormSendMessages = (props) => {
     return <form onSubmit={props.handleSubmit}>
-                <Field placeholder="Enter you message" component={"input"} name={"sendMessage"}/>
+                <div>
+                    <Field placeholder="Enter you message" component={Inputs} validate={[required]} name={"sendMessage"}/>
+                </div>
                 <button className={styles.send_message}>Отправить</button>
             </form>
 }
